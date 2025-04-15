@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from home.forms import CreacionAuto
 from home.models import Auto
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 def inicio(request):
     # return HttpResponse('<h1>HOLA</h1>')
@@ -17,7 +20,7 @@ def crear_auto(request):
         formulario = CreacionAuto(request.POST)
         if formulario.is_valid():
             info = formulario.cleaned_data
-            auto = Auto(marca=info.get('marca'), modelo=info.get('modelo'))
+            auto = Auto(marca=info.get('marca'), modelo=info.get('modelo'), fecha_creacion=info.get('fecha_creacion'))
             auto.save()
             return redirect('listado_de_autos')
     else:
@@ -28,3 +31,22 @@ def crear_auto(request):
 def listado_de_autos(request):
     autos = Auto.objects.all()
     return render(request, 'home/listado_de_autos.html', {'autos': autos})
+
+def detalle_auto(request, auto_en_especifico):
+    auto = Auto.objects.get(id=auto_en_especifico)
+    return render(request, 'home/detalle_auto.html', {'auto': auto})
+
+class VistaDetalleAuto(DetailView):
+    model = Auto
+    template_name = "home/detalle_auto.html"
+
+class VistaModificarAuto(UpdateView):
+    model = Auto
+    template_name = "home/modificar_auto.html"
+    fields = ["marca", "modelo", "fecha_creacion"]
+    success_url = reverse_lazy('listado_de_autos')
+
+class VistaEliminarAuto(DeleteView):
+    model = Auto
+    template_name = "home/eliminar_auto.html"
+    success_url = reverse_lazy('listado_de_autos')

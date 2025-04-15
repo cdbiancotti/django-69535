@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h1>Eliminar {{auto}}</h1>
+<form action="{% url "eliminar_auto" auto.id %}" method="POST">
+    {% csrf_token %}
+    <p>Desea borrar este auto?</p>
+    <input type="submit" value="Confirmar borrado">
+</form>
+{% endblock contenido %}
+
+

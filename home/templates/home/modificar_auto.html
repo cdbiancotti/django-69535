@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h1>Modificar {{auto}}</h1>
+<form action="{% url "modificar_auto" auto.id %}" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Modificar">
+</form>
+{% endblock contenido %}
+

@@ -1,32 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "crear_auto" %}>Crear auto</a>
-        <a href={% url "listado_de_autos" %}>Listado de autos</a>
-    </nav>
-    <h1>Listado de autos</h1>
+{% extends "base.html" %}
 
-    {% if autos %}
-    <ul>
-        {% for auto in autos %}
-        <li>
-            {{auto}}
-        </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>No hay autos creados.</p>
-    {% endif %}
+{% block contenido %}
+<h1>Eliminar {{auto}}</h1>
+<h1>Listado de autos</h1>
+<p>
+    <a href={% url "crear_auto" %}>Crear auto</a>
+</p>
 
-</body>
-</html>
+{% if autos %}
+<ul>
+    {% for auto in autos %}
+    <li>
+        {{auto}}
+        | <a href={% url "detalle_auto" auto.id %}>Ver mas</a>
+        | <a href={% url "modificar_auto" auto.id %}>Modificar</a>
+        | <a href={% url "eliminar_auto" auto.id %}>Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay autos creados.</p>
+{% endif %}
 
+{% endblock contenido %}
 
 

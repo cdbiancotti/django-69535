@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <a href={% url "inicio" %}>Inicio</a>
+        <a href={% url "listado_de_autos" %}>Autos</a>
+        <a href="#">Estoy al cuete</a>
+    </nav>
+    {% block contenido %}{% endblock contenido %}
+</body>
+</html>

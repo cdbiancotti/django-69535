@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "crear_auto" %}>Crear auto</a>
-        <a href={% url "listado_de_autos" %}>Listado de autos</a>
-    </nav>
-    <h1>Creacion de auto</h1>
-    <form action="{% url "crear_auto" %}" method="POST">
-        {% csrf_token %}
-        
+{% extends "base.html" %}
 
-        {{formulario}}
+{% block contenido %}
+<h1>Creacion de auto</h1>
+<form action="{% url "crear_auto" %}" method="POST">
+    {% csrf_token %}
+    
 
-        <input type="submit" value="Crear">
-        {% comment %} <button>Crear</button> {% endcomment %}
+    {{formulario}}
 
-    </form>
-</body>
-</html>
+    <input type="submit" value="Crear">
+    {% comment %} <button>Crear</button> {% endcomment %}
+
+</form>
+{% endblock contenido %}
+
+
+
