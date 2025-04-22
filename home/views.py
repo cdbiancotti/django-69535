@@ -5,12 +5,15 @@ from home.models import Auto
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):
     # return HttpResponse('<h1>HOLA</h1>')
     return render(request, 'home/inicio.html')
     # return HttpResponse('<h1 asd="asdasd" asd="asdasd" asd="asdasd"/>')
 
+@login_required
 def crear_auto(request):
     
     print('ESTOS SON LOS DATOS DEL GET -->>', request.GET)
@@ -40,13 +43,13 @@ class VistaDetalleAuto(DetailView):
     model = Auto
     template_name = "home/detalle_auto.html"
 
-class VistaModificarAuto(UpdateView):
+class VistaModificarAuto(LoginRequiredMixin, UpdateView):
     model = Auto
     template_name = "home/modificar_auto.html"
     fields = ["marca", "modelo", "fecha_creacion"]
     success_url = reverse_lazy('listado_de_autos')
 
-class VistaEliminarAuto(DeleteView):
+class VistaEliminarAuto(LoginRequiredMixin, DeleteView):
     model = Auto
     template_name = "home/eliminar_auto.html"
     success_url = reverse_lazy('listado_de_autos')

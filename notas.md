@@ -22,6 +22,7 @@ Estos ultimos son por el hecho de no compartir la info de tu bd y, aparte, las i
 - [ ] Tener en cuenta al manejar forms con imagenes hay que adaptar el template, y la vista...no solo el modelo y el formulario.
 - [ ] Uso de minimo 2 clases basadas en vista.
 - [ ] Uso de minimo un mixin en una CBV y un decorador en una view comun.
+- [ ] Hacer uso de Estaticos (carpeta static con la carga de templates desde bootstrap)
 - [ ] Una vista de inicio
 - [ ] Acceso a una vista "Acerca de mi"/"About"
 - [ ] Crear un modelo principal que contenga los siguiente campos como minimo: 3 Charfield  (o 2 Charfield y un Integerfield), 1 campo de imagen, 1 de fecha
@@ -30,16 +31,17 @@ Estos ultimos son por el hecho de no compartir la info de tu bd y, aparte, las i
 - [ ] Desde el listado:
     1. poder acceder a una vista que muestre el detalle de el objeto seleccionado
     2. poder acceder a una vista de creacion, una de edicion y una de borrado de los objetos del listado
+- [ ] [va por su cuenta] Acomodar el modelo para que maneje un campo de imagen y todas las pantallas relacionadas al modelo lo tengan en cuenta a este nuevo campo.
 - [ ] Registrar en el apartado de admin todos los modelos creados
 - [ ] Tener una app para el manejo de todas las vistas relacionadas al usuario/autenticacion
 - [ ] Desarrollar las vistas para un login, un logout y el registro de un usuario al cual se le solicite: username, email, password
-- [ ] Crear una vista de perfil donde se muestren los datos del usuario:
+- [ ] [va por su cuenta] Crear una vista de perfil donde se muestren los datos del usuario:
   - nombre
   - apellido
   - email
   - avatar
-  - Campo a eleccion (biografia, fecha de nacimiento, gustos, hobbies, etc)
-- [ ] Desde el perfil, crear un acceso a una vista de edicion de estos datos. Agregar el cambio de password.
+  - [va por su cuenta] Campo a eleccion (biografia, fecha de nacimiento, gustos, hobbies, etc)
+- [ ] Desde el perfil, crear un acceso a una vista de edicion de estos datos.
 
 - PUNTAZO A TENER EN CUENTA! PROBAR, PROBAR Y PROBAR ANTES DE
 SUBIR EL CODIGO A GITHUB... ( no apurarse a hacer el commit y subir los
